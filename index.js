@@ -3,12 +3,16 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
-dotenv.config();
 
+import postRoutes from './routes/posts.js';
+
+dotenv.config();
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+app.use('/api/v1/posts', postRoutes);
 
 app.get('/', (req, res) => {
     res.send("Home page");
